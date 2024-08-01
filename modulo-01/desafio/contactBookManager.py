@@ -17,9 +17,9 @@ if __name__=="__main__":
         user_action = input("Entre com o número da ação que deseja... ")
 
         if (user_action == "1"):
-            contact_name = input("Ensira o nome do contato: ")
-            contact_phone = input("Ensira o telefone do contato: ")
-            contact_email = input("Ensira o email do contato: ")
+            contact_name = input("Insira o nome do contato: ")
+            contact_phone = input("Insira o telefone do contato: ")
+            contact_email = input("Insira o email do contato: ")
 
             new_contact = Contact(contact_name, contact_phone, contact_email)
             my_contact_book.add_contact_to_contact_book(new_contact)
@@ -28,10 +28,10 @@ if __name__=="__main__":
             my_contact_book.get_all_contacts()
 
         elif (user_action == "3"):
-            contact_index = int(input("Ensira o número do contato... "))
-            contact_name = input("Ensira o novo nome do contato: ")
-            contact_phone = input("Ensira o novo telefone do contato: ")
-            contact_email = input("Ensira o novo email do contato: ")
+            contact_index = int(input("Insira o número do contato... "))
+            contact_name = input("Insira o novo nome do contato: ")
+            contact_phone = input("Insira o novo telefone do contato: ")
+            contact_email = input("Insira o novo email do contato: ")
 
             contact_data = {
                 "name": contact_name,
@@ -42,11 +42,11 @@ if __name__=="__main__":
             my_contact_book.update_contact(contact_index - 1, contact_data)
 
         elif (user_action == "4"):
-            contact_index = int(input("Ensira o número do contato... "))
+            contact_index = int(input("Insira o número do contato... "))
             my_contact_book.make_favorite_or_not(contact_index - 1)
 
         elif (user_action == "5"):
-            contact_index = int(input("Ensira o número do contato... "))
+            contact_index = int(input("Insira o número do contato... "))
             my_contact_book.delete_contact_from_contact_book(contact_index - 1)
 
         elif (user_action == "6"):
