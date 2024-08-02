@@ -7,3 +7,4 @@ Códigos desenvolvidos durante as aulas de Python da Rocketseat.
        * gerenciador.py: código que gerencia as tarefas
        * tarefas.py: classe Tarefas
    * pasta desafio: projeto de gerenciamento de agenda de contatos proposto pela Rocketseat
+   * pasta jogo: projeto Jogo Vingadores
