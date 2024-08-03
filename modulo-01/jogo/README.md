@@ -7,12 +7,12 @@ PS: Just to explain... when you read ```Player Character``` its about **WHAT YOU
 ## 📜 Rules Of The Game
 ### 👽 Characters:
 #### Difference between Hero, AntiHero and Villain:
-* Heroes have a bonus power to incremment his damage. Heroes are only player's character.
-* Villains can heal themselves. Villains are only machine's character.
+* Heroes have a bonus power to incremment his damage. Heroes are only Player's Character.
+* Villains can heal themselves. Villains are only Machine's Character.
     * **Heroes and Villains use the same calc to make damage.**
 * AntiHero is a Hero and a Villain, so AntiHeroes have bonus power **AND** healing power.
     * They also are more powerfull. So it takes more time to defeat them.
-    * The player and the machine can be them.
+    * The Player and the Machine can be them.
 
 #### 🧨 Characters Damage Attack:
 The damage was calculated considerating character's level and power's damage. So, If the Player Character has a Power Types which is Machine Character's weakness AND has also a higher level, the damage will be in the maximum range.
@@ -54,7 +54,7 @@ The Power Types are inspired in the Infinity Stones. So there are six types of p
 * Minding (Mind Stone, the yellow one);
 * Soul (Soul Stone, the orange one).
 
-The Powers also have weaknesses. Each weakness was defined following the content of Marvel comics ((Infinity Wars, vol. 8, 2019, Brazilian Edition); to be more especific).
+The Powers also have weaknesses. Each weakness was defined following the content of Marvel comics ((Infinity Wars, vol. 8, 2019, Brazilian Edition); to be more especific). The weakness is only about the mainly Power, not the Bonus Power. So, if your rival has a Bonus Power which is your weakness, this do not affect you.
 
 #### 🤒 Power Types and Them Weaknesses:
 * soul loses to realistic;
