@@ -93,14 +93,24 @@ class GameManager():
         return characters_list
     
     def actions_player_list(self) -> None:
+        print("--------------------------------------------------")
+        print("Situação dos personagens:")
         print(f"{self.get_player_character().__str__()}")
-        print("1. Atacar adversário")
+        print(f"{self.get_machine_character().__str__()}")
+        print("Sua pontuação: ", self.get_player_character().get_score(), " | Pontuação do Adversário: ", self.get_machine_character().get_score())
+        print("\n1. Atacar adversário")
         print("2. Se defender do ataque")
-        if (self.get_player_character().get_lifes()*2 == self.get_player_character().get_original_lifes() \
+        if (self.get_player_character().get_lifes()*2 <= self.get_player_character().get_original_lifes() \
             and not self.get_player_character().get_control_bonus()):
             print("3. Ativar poder bônus - uso único")
+        if (self.get_player_character().get_lifes()*2 <= self.get_player_character().get_original_lifes() \
+            and self.get_player_character().can_heal):
+            if (not self.get_player_character().get_control_heal()): 
+                print("4. Ativar vida extra - uso único")
 
-        chosen_action = input("Entre com a ação... ")
+        chosen_action = ""
+        if (self.get_player_character().get_lifes() > 0 and self.get_machine_character().get_lifes() > 0): 
+            chosen_action = input("Entre com a ação... ")
         return chosen_action
     
     def start_fight(self) -> None:
@@ -110,17 +120,6 @@ class GameManager():
 
 if __name__== "__main__":
     my_game_manager = GameManager()
-
-    # defining power types
-    # energetic, space, time, realistic, minding, soul
-
-    # rules
-    # soul defeats minding
-    # minding defeats energetic
-    # energetic defeats space
-    # space defeats time
-    # time defeats realistic
-    # realistic defeats soul
 
     energetic = PowerType("Energetic Power", 20, "Minding Power")
     my_game_manager.add_power_type(energetic)
@@ -142,88 +141,88 @@ if __name__== "__main__":
 
     # defining heros
     # the hero can't have a bonus which defeats his mainly power
-    iron_man = Hero("Iron Man", 150, 3, energetic, space_power)
+    iron_man = Hero("Iron Man", 100, 3, energetic, space_power)
     my_game_manager.add_hero(iron_man)
 
     thor = Hero("Thor", 200, 5, energetic, space_power)
     my_game_manager.add_hero(thor)
 
-    hulk = Hero("Hulk", 50, 6, energetic, time_power)
+    hulk = Hero("Hulk", 100, 6, energetic, time_power)
     my_game_manager.add_hero(hulk)
 
-    vision = Hero("Vision", 70, 7, minding, space_power)
+    vision = Hero("Vision", 100, 7, minding, space_power)
     my_game_manager.add_hero(vision)
 
-    jean_grey = Hero("Jean Grey", 50, 8, minding, realistic)
+    jean_grey = Hero("Jean Grey", 100, 8, minding, realistic)
     my_game_manager.add_hero(jean_grey)
 
-    captain_america = Hero("Captain America", 80, 9, time_power, energetic)
+    captain_america = Hero("Captain America", 100, 9, time_power, energetic)
     my_game_manager.add_hero(captain_america)
 
-    doctor_strange = Hero("Doctor Strange", 80, 12, time_power, minding)
+    doctor_strange = Hero("Doctor Strange", 100, 9, time_power, minding)
     my_game_manager.add_hero(doctor_strange)
 
-    foton = Hero("Foton", 90, 13, space_power, realistic)
+    foton = Hero("Foton", 100, 7, space_power, realistic)
     my_game_manager.add_hero(foton)
 
-    spider_man = Hero("Spider Man", 100, 12, realistic, minding)
+    spider_man = Hero("Spider Man", 100, 5, realistic, minding)
     my_game_manager.add_hero(spider_man)
 
     # defining antiheros
     # the antihero can't have a bonus which defeats his mainly power
-    scarlet_witch = AntiHero("Scarlet Witch", 150, 13, realistic, space_power)
+    scarlet_witch = AntiHero("Scarlet Witch", 150, 8, realistic, space_power)
     my_game_manager.add_antihero(scarlet_witch)
 
-    loki = AntiHero("Loki", 200, 9, space_power, minding)
+    loki = AntiHero("Loki", 200, 4, space_power, minding)
     my_game_manager.add_antihero(loki)
     
-    groot = AntiHero("Groot", 100, 5, energetic, soul)
+    groot = AntiHero("Groot", 105, 5, energetic, soul)
     my_game_manager.add_antihero(groot)
 
-    gamora = AntiHero("Gamora", 80, 10, energetic, soul)
+    gamora = AntiHero("Gamora", 120, 10, energetic, soul)
     my_game_manager.add_antihero(gamora)
     
-    nebula = AntiHero("Nebula", 70, 4, energetic, realistic)
+    nebula = AntiHero("Nebula", 110, 7, energetic, realistic)
     my_game_manager.add_antihero(nebula)
 
-    black_widow = Hero("Black Widow", 60, 8, soul, energetic)
+    black_widow = Hero("Black Widow", 100, 8, soul, energetic)
     my_game_manager.add_antihero(black_widow)
 
-    starlord = AntiHero("Star Lord", 50, 12, energetic, space_power)
+    starlord = AntiHero("Star Lord", 100, 6, energetic, space_power)
     my_game_manager.add_antihero(starlord)
 
-    rocket = AntiHero("Rocket Racoon", 60, 15, energetic, realistic)
+    rocket = AntiHero("Rocket Racoon", 110, 8, energetic, realistic)
     my_game_manager.add_antihero(rocket)
 
-    mandi = AntiHero("Mandi", 40, 8, minding, time_power)
+    mandi = AntiHero("Mandi", 110, 2, minding, time_power)
     my_game_manager.add_antihero(mandi)
 
     # defining villains
-    thanos = Villain("Thanos", 120, 10, energetic)
+    thanos = Villain("Thanos", 180, 10, energetic)
     my_game_manager.add_villain(thanos)
 
     hela = Villain("Hela", 200, 8, time_power)
     my_game_manager.add_villain(hela)
     
-    dormammu = Villain("Dormammu", 200, 5, realistic)
+    dormammu = Villain("Dormammu", 180, 9, realistic)
     my_game_manager.add_villain(dormammu)
     
-    red_skull = Villain("Red Skull", 50, 13, soul)
+    red_skull = Villain("Red Skull", 100, 2, soul)
     my_game_manager.add_villain(red_skull)
     
-    ultron = Villain("Ultron", 80, 3, minding)
+    ultron = Villain("Ultron", 100, 3, minding)
     my_game_manager.add_villain(ultron)
     
-    kingpin = Villain("Kingpin", 100, 13, energetic)
+    kingpin = Villain("Kingpin", 100, 5, energetic)
     my_game_manager.add_villain(kingpin)
     
-    kang = Villain("Kang", 100, 5, time_power)
+    kang = Villain("Kang", 100, 7, time_power)
     my_game_manager.add_villain(kang)
     
-    mysterio = Villain("Mysterio", 60, 6, realistic)
+    mysterio = Villain("Mysterio", 100, 6, realistic)
     my_game_manager.add_villain(mysterio)
     
-    enchantress = Villain("Enchantress", 50, 7, space_power)
+    enchantress = Villain("Enchantress", 190, 7, space_power)
     my_game_manager.add_villain(enchantress)
     
     # loop to user choose what character will be
@@ -244,18 +243,57 @@ if __name__== "__main__":
         else:
             print("Opção inválida...")
 
-    my_game_manager.select_random_character_type()
-
-    my_game_manager.start_fight()
+    my_game_manager.select_random_character_type() # responsible for choose character machine
+    my_game_manager.start_fight() # start game
     
     while True:
         chosen_action = my_game_manager.actions_player_list()
+        
+        # verify if is game over
+        if (my_game_manager.get_player_character().get_lifes() <= 0):
+            print("GAME OVER PRA VOCÊ")
+            break
+        # verify if user won
+        if (my_game_manager.get_machine_character().get_lifes() <= 0):
+            print("PARABÉNS! VOCÊ VENCEU!")
+            break
 
+        # chances: 60% of attack and 40% of defend
+        # bonus is used when appears
+        # machine heals when lifes = 0
+        actions_list = ["1", "1", "1", "2", "2"]
+        action_index = random.randrange(0, actions_list.__len__())
+        machine_action = actions_list[action_index]
+
+        # machine bonus
+        if (my_game_manager.get_machine_character().get_lifes()*2 <= my_game_manager.get_machine_character().get_original_lifes() \
+            and not my_game_manager.get_machine_character().has_bonus):
+            machine_action == "3"
+            if (machine_action == "3"):
+                my_game_manager.get_machine_character().use_bonus_power()
+
+        # user actions
         if (chosen_action == "1"): # attack
-            pass
+            my_game_manager.get_player_character().attack(my_game_manager.get_machine_character())
+            if (my_game_manager.get_machine_character().get_lifes() <= 0 and my_game_manager.get_machine_character().get_control_heal()):
+                my_game_manager.get_machine_character().heal()
         elif (chosen_action == "2"): # defend
-            pass
-        elif (chosen_action == "3"): # bonus attack... follow rules
-            pass
+            my_game_manager.get_player_character().defend_from_rival_attack()
+        elif (chosen_action == "3" and my_game_manager.get_player_character().has_bonus): # bonus attack... follow rules
+            my_game_manager.get_player_character().use_bonus_power()
+        elif (chosen_action == "4" and my_game_manager.get_player_character().can_heal): # heal
+            my_game_manager.get_player_character().heal()
+        else:
+            print("Opção inválida...")
+
+        # machine actions
+        if (machine_action == "1"):
+            print(f"{my_game_manager.get_machine_character().get_name()} atacou!\n")
+            my_game_manager.get_machine_character().attack(my_game_manager.get_player_character())
+        elif (machine_action == "2"):
+            my_game_manager.get_machine_character().defend_from_rival_attack()
+            print(f"{my_game_manager.get_machine_character().get_name()} se defendeu!\n")
+        elif (machine_action == "3"):
+            print(f"{my_game_manager.get_machine_character().get_name()} usou poder bônus!\n")
         else:
             print("Opção inválida...")
