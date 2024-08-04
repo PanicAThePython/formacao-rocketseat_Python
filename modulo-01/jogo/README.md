@@ -4,7 +4,7 @@ Hi!! I'm Natália from Brazil and I developed this game to train my programming 
 
 PS: Just to explain... when you read ```Player Character``` its about **WHAT YOU CAN DO AS A CHARACTER**. When you read ```Machine Character``` is about **WHAT THE APPLICATION CAN DO AS A CHARACTER**.
 
-## 📜 Rules Of The Game
+## 📜 Game Rules
 ### 👽 Characters:
 #### Difference between Hero, AntiHero and Villain:
 * Heroes have a bonus power to incremment his damage. Heroes are only Player's Character.
