@@ -176,7 +176,7 @@ if __name__== "__main__":
     loki = AntiHero("Loki", 200, 4, space_power, minding)
     my_game_manager.add_antihero(loki)
     
-    groot = AntiHero("Groot", 105, 5, energetic, soul)
+    groot = AntiHero("Groot", 105, 4, energetic, soul)
     my_game_manager.add_antihero(groot)
 
     gamora = AntiHero("Gamora", 120, 10, energetic, soul)
@@ -265,18 +265,9 @@ if __name__== "__main__":
         action_index = random.randrange(0, actions_list.__len__())
         machine_action = actions_list[action_index]
 
-        # machine bonus
-        if (my_game_manager.get_machine_character().get_lifes()*2 <= my_game_manager.get_machine_character().get_original_lifes() \
-            and not my_game_manager.get_machine_character().has_bonus):
-            machine_action == "3"
-            if (machine_action == "3"):
-                my_game_manager.get_machine_character().use_bonus_power()
-
         # user actions
         if (chosen_action == "1"): # attack
             my_game_manager.get_player_character().attack(my_game_manager.get_machine_character())
-            if (my_game_manager.get_machine_character().get_lifes() <= 0 and my_game_manager.get_machine_character().get_control_heal()):
-                my_game_manager.get_machine_character().heal()
         elif (chosen_action == "2"): # defend
             my_game_manager.get_player_character().defend_from_rival_attack()
         elif (chosen_action == "3" and my_game_manager.get_player_character().has_bonus): # bonus attack... follow rules
@@ -286,6 +277,12 @@ if __name__== "__main__":
         else:
             print("Opção inválida...")
 
+        
+        # machine bonus
+        if (my_game_manager.get_machine_character().get_lifes()*2 <= my_game_manager.get_machine_character().get_original_lifes() \
+            and my_game_manager.get_machine_character().has_bonus): 
+            if (not my_game_manager.get_machine_character().get_control_bonus()): machine_action = "3"
+
         # machine actions
         if (machine_action == "1"):
             print(f"{my_game_manager.get_machine_character().get_name()} atacou!\n")
@@ -294,6 +291,10 @@ if __name__== "__main__":
             my_game_manager.get_machine_character().defend_from_rival_attack()
             print(f"{my_game_manager.get_machine_character().get_name()} se defendeu!\n")
         elif (machine_action == "3"):
+            my_game_manager.get_machine_character().use_bonus_power()
             print(f"{my_game_manager.get_machine_character().get_name()} usou poder bônus!\n")
         else:
             print("Opção inválida...")
+
+        if (my_game_manager.get_machine_character().get_lifes() <= 0 and not my_game_manager.get_machine_character().get_control_heal()):
+            my_game_manager.get_machine_character().heal()
