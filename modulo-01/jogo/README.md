@@ -56,7 +56,7 @@ The Power Types are inspired in the Infinity Stones. So there are six types of p
 
 The Powers also have weaknesses. Each weakness was defined following the content of Marvel comics ((Infinity Wars, vol. 8, 2019, Brazilian Edition); to be more especific). The weakness is only about the mainly Power, not the Bonus Power. So, if your rival has a Bonus Power which is your weakness, this do not affect you.
 
-#### 🤒 Power Types and Them Weaknesses:
+#### 🤒 Power Types and its Weaknesses:
 * soul loses to realistic;
 * minding loses to soul;
 * energetic loses to minding;
